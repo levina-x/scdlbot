@@ -1,4 +1,5 @@
-*Sorry*, no supported links found in your request.
-Or, if it was YouTube link, YouTube just didn't let me download from it too repeatedly..
-Just wait and try again later, or try my test version bot: @scdltestbot or some another bot like @utubebot.
-For more information see /help
+*maaf*, tidak ada tautan yang di dukung dalam permintaan anda.
+
+atau, jika itu adalah link dari youtube, itu artinya youtube tidak mengizinkan saya mengunduh file Itu dari nya.
+
+Laporkan masalah ini ke: @dlwrml
