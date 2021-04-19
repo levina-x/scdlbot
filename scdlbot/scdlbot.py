@@ -31,7 +31,7 @@ from scdlbot.utils import *
 
 logger = logging.getLogger(__name__)
 
-REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request')
+REQUEST_TIME = Summary('request_processing_seconds', 'Waktu yang dihabiskan untuk memproses permintaan')
 
 
 class ScdlBot:
@@ -45,7 +45,7 @@ class ScdlBot:
             "sc": "soundcloud",
             "scapi": "api.soundcloud",
             "bc": "bandcamp",
-            "yt": "youtu",
+            "yt": "youtube",
         }
         self.APP_URL = app_url
         self.DL_TIMEOUT = dl_timeout
@@ -127,8 +127,8 @@ class ScdlBot:
         dispatcher.add_error_handler(self.error_callback)
 
         self.bot_username = self.updater.bot.get_me().username
-        self.RANT_TEXT_PRIVATE = "Read /help to learn how to use me"
-        self.RANT_TEXT_PUBLIC = "[Start me in PM to read help and learn how to use me](t.me/{}?start=1)".format(
+        self.RANT_TEXT_PRIVATE = "baca /help untuk mempelajari cara menggunakan saya"
+        self.RANT_TEXT_PUBLIC = "[Mulai saya di PM untuk membaca bantuan dan mempelajari cara menggunakan saya](t.me/{}?start=1)".format(
             self.bot_username)
 
     def start(self, use_webhook=False, webhook_host="127.0.0.1", webhook_port=None, cert_file=None, cert_key_file=None,
@@ -291,7 +291,7 @@ class ScdlBot:
                 mode)
             self.rant_and_cleanup(context.bot, chat_id, rant_text, reply_to_message_id=reply_to_message_id)
             return
-        # apologize and send TYPING: always in PM and only when it's command in non-PM
+        # apologize and send TYPING: selalu di PM dan hanya jika perintah di non-PM
         apologize = chat_type == Chat.PRIVATE or command_passed
         if apologize:
             context.bot.send_chat_action(chat_id=chat_id, action=ChatAction.TYPING)
@@ -361,7 +361,7 @@ class ScdlBot:
                 if chat_member_status not in [ChatMember.ADMINISTRATOR,
                                               ChatMember.CREATOR] and user_id not in self.ALERT_CHAT_IDS:
                     log_and_track("settings_fail")
-                    update.callback_query.answer(text="You're not chat admin")
+                    update.callback_query.answer(text="anda bukan admin grup")
                     return
             log_and_track("settings_{}".format(action), btn_msg)
             if action == "close":
@@ -656,13 +656,13 @@ class ScdlBot:
                         if not (exc.file_format in ["m3u", "jpg", "jpeg", "png", "finished", "tmp"]):
                             logger.warning("Unsupported file format: %s", file_name)
                             bot.send_message(chat_id=chat_id, reply_to_message_id=reply_to_message_id,
-                                             text="*Sorry*, downloaded file `{}` is in format I could not yet convert or send".format(
+                                             text="*maaf*, file yang diunduh `{}` dalam format yang belum bisa saya ubah atau kirim".format(
                                                  file_name),
                                              parse_mode='Markdown')
                     except FileTooLargeError as exc:
                         logger.info("Large file for convert: %s", file_name)
                         bot.send_message(chat_id=chat_id, reply_to_message_id=reply_to_message_id,
-                                         text="*Sorry*, downloaded file `{}` is `{}` MB and it is larger than I could convert (`{} MB`)".format(
+                                         text="*maaf*, file yang diunduh `{}` is `{}` MB dan itu lebih besar dari yang bisa saya konversi (`{} MB`)".format(
                                              file_name, exc.file_size // 1000000,
                                                         self.MAX_CONVERT_FILE_SIZE // 1000000),
                                          parse_mode='Markdown')
@@ -709,7 +709,7 @@ class ScdlBot:
                     except FileSentPartiallyError as exc:
                         sent_audio_ids = exc.sent_audio_ids
                         bot.send_message(chat_id=chat_id, reply_to_message_id=reply_to_message_id,
-                                         text="*Sorry*, could not send file `{}` or some of it's parts..".format(
+                                         text="*maaf*, tidak dapat mengirim file `{}` atau beberapa bagiannya..".format(
                                              file_name),
                                          parse_mode='Markdown')
                         logger.warning("Sending some parts failed: %s", file_name)
