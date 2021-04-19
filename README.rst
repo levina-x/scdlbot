@@ -187,7 +187,7 @@ Using Python only
     # If you've installed package from PyPI into the system,
     # you can also replace 'python3 -m scdlbot' with pure 'scdlbot'
 
-Deploying to `Heroku <https://levina-x.heroku.com/>`__
+Deploying to `Heroku <https://heroku.com/>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |Deploy|
